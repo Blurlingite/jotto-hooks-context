@@ -1,19 +1,20 @@
 {
-  "name": "jotto-hooks-context",
+  "name": "base-for-hooks-context",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
+    "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.2.1",
-    "@types/jest": "^24.9.1",
-    "@types/node": "^12.12.37",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.2",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "typescript": "^3.7.5"
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.4.0",
+    "typescript": "^3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,5 +36,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "check-prop-types": "^1.1.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "jest-enzyme": "^7.1.2",
+    "react-test-renderer": "^16.13.1"
   }
 }
