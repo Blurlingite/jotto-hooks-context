@@ -19,6 +19,9 @@ describe("state controlled input field", () => {
 
   beforeEach(() => {
     mockSetCurrentGuess.mockClear();
+    // Replace React's useState with our fake function (jest.fn())
+    // We will return an array with an empty string and our mockSetCurrentGuess
+    // We want to return mockSetCurrentGuess so we can see when useState is called, so we pass it into the array
     React.useState = jest.fn(() => ["", mockSetCurrentGuess]);
     wrapper = setup({});
   });
@@ -30,5 +33,16 @@ describe("state controlled input field", () => {
     inputBox.simulate("change", mockEvent); // simulate onChange, so it's like entering the word "train" & clicking the submit button
 
     expect(mockSetCurrentGuess).toHaveBeenCalledWith("train");
+  });
+
+  test("field is cleared upon submit button click", () => {
+    const submitButton = findByTestAttr(wrapper, "submit-button");
+
+    // pass in an empty preventDefault function to avoid error after using evt.preventDefault in component
+    submitButton.simulate("click", {
+      preventDefault() {},
+    });
+
+    expect(mockSetCurrentGuess).toHaveBeenCalledWith("");
   });
 });
