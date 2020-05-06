@@ -1,6 +1,9 @@
 import React from "react";
 
-const Input = (props: any) => {
+interface ComponentProp {
+  secretWord: string;
+}
+const Input = (props: ComponentProp) => {
   const [currentGuess, setCurrentGuess] = React.useState("");
 
   return (
