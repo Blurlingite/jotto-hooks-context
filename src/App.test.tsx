@@ -28,4 +28,15 @@ describe("getSecretWord calls", () => {
     // check if secret word was updated
     expect(mockGetSecretWord).toHaveBeenCalled();
   });
+
+  test("secretWord does npt update on App update", () => {
+    const wrapper = setup();
+    mockGetSecretWord.mockClear();
+    // wrapper.update() doesn't trigger update
+    // (issue forked from https://github.com/airbnb/enzyme/issues/2091)
+    wrapper.setProps();
+
+    // check if secret word was updated
+    expect(mockGetSecretWord).not.toHaveBeenCalled();
+  });
 });
