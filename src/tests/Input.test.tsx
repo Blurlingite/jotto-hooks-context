@@ -1,14 +1,27 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { mount } from "enzyme";
 import Input from "../components/Input";
 import { findByTestAttr } from "../../test/testUtils";
+import languageContext from "../contexts/languageContext";
 
-const setup = (secretWord = "party") => {
-  return shallow(<Input secretWord={secretWord} />);
+const setup = ({
+  language,
+  secretWord,
+}: {
+  language: string;
+  secretWord: string;
+}) => {
+  language = language || "en";
+  secretWord = secretWord || "party";
+  return mount(
+    <languageContext.Provider value={language}>
+      <Input secretWord={secretWord} />
+    </languageContext.Provider>
+  );
 };
 
 test("Input renders w/o error", () => {
-  const wrapper = setup();
+  const wrapper = setup({});
   const component = findByTestAttr(wrapper, "component-input");
   expect(component.length).toBe(1);
 });
@@ -44,5 +57,18 @@ describe("state controlled input field", () => {
     });
 
     expect(mockSetCurrentGuess).toHaveBeenCalledWith("");
+  });
+});
+
+describe("languagePicker", () => {
+  test("correctly renders submit string in english", () => {
+    const wrapper = setup({ language: "en" });
+    const submitButton = findByTestAttr(wrapper, "submit-button");
+    expect(submitButton.text()).toBe("Submit");
+  });
+  test("correctly renders submit string in emoji", () => {
+    const wrapper = setup({ language: "emoji" });
+    const submitButton = findByTestAttr(wrapper, "submit-button");
+    expect(submitButton.text()).toBe("🚀");
   });
 });

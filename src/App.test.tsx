@@ -15,7 +15,9 @@ const setup = (secretWord: string | null = "party") => {
   // we are mocking the return value of a useReducer hook:
   // 1st param: desired state (the secretWord)
   // 2nd param: a placeholder mock function for the dispatch function (jest.fn()). This won't be part of our tests, just something to stop errors
-  const mockUseReducer = jest.fn().mockReturnValue([{ secretWord }, jest.fn()]);
+  const mockUseReducer = jest
+    .fn()
+    .mockReturnValue([{ secretWord, language: "en" }, jest.fn()]);
   // React's useReducer hook is now your mock function
   React.useReducer = mockUseReducer;
   // using mount b/c useEffect doesn't work with shallow yet
