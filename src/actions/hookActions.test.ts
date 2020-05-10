@@ -1,7 +1,6 @@
 import moxios from "moxios";
 
 import { getSecretWord } from "./hookActions";
-import { request } from "http";
 
 describe("moxios tests", () => {
   beforeEach(() => {

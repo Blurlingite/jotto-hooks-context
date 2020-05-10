@@ -1,4 +1,4 @@
-import stringsModule from "../helpers/strings";
+import stringsModule from "./strings";
 
 const { getStringByLanguage } = stringsModule;
 

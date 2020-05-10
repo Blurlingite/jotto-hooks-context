@@ -20,8 +20,8 @@ const languageStrings = {
 };
 
 function getStringByLanguage(
-  languageCode: string,
-  stringKey: string,
+  languageCode,
+  stringKey,
   strings = languageStrings
 ) {
   if (!strings[languageCode] || !strings[languageCode][stringKey]) {
@@ -29,6 +29,8 @@ function getStringByLanguage(
     // fall back to english
     return strings.en[stringKey];
   }
+  // console.log("Text: " + strings[languageCode][stringKey]);
+
   return strings[languageCode][stringKey];
 }
 
