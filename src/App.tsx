@@ -10,6 +10,7 @@ function reducer(state: any, action: any) {
     case "setSecretWord":
       return { ...state, secretWord: action.payload };
     case "setLanguage":
+      console.log("Language is: " + action.payload);
       return { ...state, language: action.payload };
     default:
       throw new Error(`Invalid action type: ${action.type}`);
@@ -24,8 +25,10 @@ function App() {
   const setSecretWord = (secretWord: string) =>
     dispatch({ type: "setSecretWord", payload: secretWord });
 
-  const setLanguage = (language: string) =>
+  const setLanguage = (language: string) => {
+    console.log(language);
     dispatch({ type: "setLanguage", payload: language });
+  };
 
   React.useEffect(() => {
     hookActions.getSecretWord(setSecretWord);
