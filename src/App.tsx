@@ -19,7 +19,7 @@ function reducer(state: any, action: any) {
 function App() {
   const [state, dispatch] = React.useReducer(reducer, {
     secretWord: null,
-    langauge: "en",
+    language: "en",
   });
 
   const setSecretWord = (secretWord: string) =>
@@ -49,7 +49,7 @@ function App() {
     <div className="container" data-test="component-app">
       <h1>Jotto</h1>
       {/* this provides the language to the components within it and we access the language through App's state with state.language*/}
-      <languageContext.Provider value={state.langauge}>
+      <languageContext.Provider value={state.language}>
         <LanguagePicker setLanguage={setLanguage} />
         <Input secretWord={state.secretWord} />
       </languageContext.Provider>
