@@ -1,11 +1,13 @@
 import React from "react";
 import stringsModule from "../helpers/strings";
 import languageContext from "../contexts/languageContext";
+import successContext from "../contexts/successContext";
 
-const Congrats = (props: any) => {
+const Congrats = () => {
+  const [success] = successContext.useSuccess();
   // consume language context
   const language = React.useContext(languageContext);
-  if (props.success) {
+  if (success) {
     return (
       <div data-test="component-congrats" className="alert alert-success">
         <span data-test="congrats-message">
