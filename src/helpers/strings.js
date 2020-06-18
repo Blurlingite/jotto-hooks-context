@@ -29,7 +29,6 @@ function getStringByLanguage(
     // fall back to english
     return strings.en[stringKey];
   }
-  // console.log("Text: " + strings[languageCode][stringKey]);
 
   return strings[languageCode][stringKey];
 }
