@@ -1,20 +1,23 @@
 import React from "react";
 import stringsModule from "../helpers/strings";
 import languageContext from "../contexts/languageContext";
+import guessedWordsContext from "../contexts/guessedWordsContext";
 
 type guessedWordType = { guessedWord: string; letterMatchCount: number };
 
-const GuessedWords = (props: any) => {
+const GuessedWords = () => {
+  const [guessedWords] = guessedWordsContext.useGuessedWords();
+
   const language = React.useContext(languageContext);
   let contents;
-  if (props.guessedWords.length === 0) {
+  if (guessedWords.length === 0) {
     contents = (
       <span data-test="guess-instructions">
         {stringsModule.getStringByLanguage(language, "guessPrompt")}
       </span>
     );
   } else {
-    const guessedWordsRows = props.guessedWords.map(
+    const guessedWordsRows = guessedWords.map(
       (word: guessedWordType, index: number) => (
         <tr data-test="guessed-word" key={index}>
           <td>{word.guessedWord}</td>

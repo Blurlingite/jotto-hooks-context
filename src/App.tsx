@@ -3,6 +3,7 @@ import "./App.css";
 import hookActions from "./actions/hookActions";
 import Input from "./components/Input";
 import languageContext from "./contexts/languageContext";
+import guessedWordsContext from "./contexts/guessedWordsContext";
 import successContext from "./contexts/successContext";
 import LanguagePicker from "./components/LanguagePicker";
 import Congrats from "./components/Congrats";
@@ -52,11 +53,13 @@ function App() {
       {/* this provides the language to the components within it and we access the language through App's state with state.language*/}
       <languageContext.Provider value={state.language}>
         <LanguagePicker setLanguage={setLanguage} />
-        <successContext.SuccessProvider>
-          <Congrats />
-          <Input secretWord={state.secretWord} />
-        </successContext.SuccessProvider>
-        {/* <GuessedWords /> */}
+        <guessedWordsContext.GuessedWordsProvider>
+          <successContext.SuccessProvider>
+            <Congrats />
+            <Input secretWord={state.secretWord} />
+          </successContext.SuccessProvider>
+          <GuessedWords />
+        </guessedWordsContext.GuessedWordsProvider>
       </languageContext.Provider>
     </div>
   );

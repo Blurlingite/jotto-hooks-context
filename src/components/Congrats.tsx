@@ -4,7 +4,7 @@ import languageContext from "../contexts/languageContext";
 import successContext from "../contexts/successContext";
 
 const Congrats = () => {
-  const [success] = successContext.useSuccess();
+  const [success]: any = successContext.useSuccess();
   // consume language context
   const language = React.useContext(languageContext);
   if (success) {
