@@ -3,19 +3,25 @@ import { mount } from "enzyme";
 import Input from "../components/Input";
 import { findByTestAttr } from "../../test/testUtils";
 import languageContext from "../contexts/languageContext";
+import successContext from "../contexts/successContext";
 
 const setup = ({
   language,
   secretWord,
+  success,
 }: {
   language: string;
   secretWord: string;
+  success: boolean;
 }) => {
   language = language || "en";
   secretWord = secretWord || "party";
+  success = success || false;
   return mount(
     <languageContext.Provider value={language}>
-      <Input secretWord={secretWord} />
+      <successContext.SuccessProvider value={[success, jest.fn()]}>
+        <Input secretWord={secretWord} />
+      </successContext.SuccessProvider>
     </languageContext.Provider>
   );
 };
@@ -71,4 +77,9 @@ describe("languagePicker", () => {
     const submitButton = findByTestAttr(wrapper, "submit-button");
     expect(submitButton.text()).toBe("🚀");
   });
+});
+
+test("input component does not show when success is true", () => {
+  const wrapper = setup({ secretWord: "party", success: true });
+  expect(wrapper.isEmptyRender()).toBe(true);
 });

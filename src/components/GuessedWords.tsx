@@ -6,7 +6,7 @@ import guessedWordsContext from "../contexts/guessedWordsContext";
 type guessedWordType = { guessedWord: string; letterMatchCount: number };
 
 const GuessedWords = () => {
-  const [guessedWords] = guessedWordsContext.useGuessedWords();
+  const [guessedWords]: any = guessedWordsContext.useGuessedWords();
 
   const language = React.useContext(languageContext);
   let contents;

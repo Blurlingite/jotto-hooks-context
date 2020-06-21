@@ -1,14 +1,19 @@
 import React from "react";
 import stringsModule from "../helpers/strings";
 import languageContext from "../contexts/languageContext";
+import successContext from "../contexts/successContext";
 
 interface ComponentProps {
   secretWord: string;
 }
 function Input(props: ComponentProps) {
   const language = React.useContext(languageContext);
+  const [success, setSuccess]: any = successContext.useSuccess();
   const [currentGuess, setCurrentGuess] = React.useState("");
 
+  if (success) {
+    return null;
+  }
   return (
     <div data-test="component-input">
       <form className="form-inline">
