@@ -49,6 +49,7 @@ function App() {
 
   return (
     <div className="container" data-test="component-app">
+      <p>The secret word is {state.secretWord}</p>
       <h1>Jotto</h1>
       {/* this provides the language to the components within it and we access the language through App's state with state.language*/}
       <languageContext.Provider value={state.language}>
