@@ -1,6 +1,6 @@
 import React from "react";
 
-const successContext = React.createContext();
+const successContext = React.createContext(false);
 
 /**
  * @function useSuccess

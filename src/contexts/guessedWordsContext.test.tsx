@@ -1,6 +1,5 @@
 import React from "react";
 import { shallow } from "enzyme";
-
 import { GuessedWordsProvider, useGuessedWords } from "./guessedWordsContext";
 
 // a functional component that calls useGuessedWords for the tests

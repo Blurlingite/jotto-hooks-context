@@ -1,7 +1,7 @@
 import React from "react";
 
 // no default value
-const guessedWordsContext = React.createContext();
+const guessedWordsContext = React.createContext([]);
 
 /**
  * @function useGuessedWords
@@ -9,10 +9,6 @@ const guessedWordsContext = React.createContext();
  *
  */
 export function useGuessedWords() {
-  // useContext is a hook that returns the context value
-  // In this case, the context value is an [value, setter] array for the context state
-  // useContext also subscribes to changes, and will update any time the context value updates
-  //     we've memoized this so that it will only update when the guessedWords value updates
   const context = React.useContext(guessedWordsContext);
 
   // throw an error if the context doesn't exist -- means we aren't in a provider
@@ -22,7 +18,6 @@ export function useGuessedWords() {
     );
   }
 
-  // otherwise return the context
   return context;
 }
 
@@ -33,7 +28,6 @@ export function useGuessedWords() {
  */
 export function GuessedWordsProvider(props: any) {
   // create state that will be used within the provider
-  // initial state value is false
   const [guessedWords, setGuessedWords] = React.useState([]);
 
   // value for the context provider will be array of [value, setter] for guessedWords state
