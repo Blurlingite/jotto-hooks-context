@@ -5,12 +5,10 @@ import successContext from "../contexts/successContext";
 import guessedWordsContext from "../contexts/guessedWordsContext";
 import { getLetterMatchCount } from "../helpers";
 
-interface ComponentProps {
-  secretWord: string;
-}
 function Input({ secretWord }: { secretWord: string }) {
   const language = React.useContext(languageContext);
   const [success, setSuccess]: any = successContext.useSuccess();
+
   const [
     guessedWords,
     setGuessedWords,

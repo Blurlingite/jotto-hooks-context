@@ -9,7 +9,29 @@ import LanguagePicker from "./components/LanguagePicker";
 import Congrats from "./components/Congrats";
 import GuessedWords from "./components/GuessedWords";
 
-function reducer(state: any, action: any) {
+interface AppState {
+  secretWord: string | null;
+  language: string;
+}
+
+enum Action {
+  "setSecretWord" = "setSecretWord",
+  "setLanguage" = "setLanguage",
+}
+
+interface setSecretWord {
+  type: Action.setSecretWord;
+  payload: string;
+}
+
+interface setLanguage {
+  type: Action.setLanguage;
+  payload: string;
+}
+
+type AppActions = setSecretWord | setLanguage;
+
+function reducer(state: AppState, action: AppActions) {
   switch (action.type) {
     case "setSecretWord":
       return { ...state, secretWord: action.payload };
@@ -26,10 +48,10 @@ function App() {
   });
 
   const setSecretWord = (secretWord: string) =>
-    dispatch({ type: "setSecretWord", payload: secretWord });
+    dispatch({ type: Action.setSecretWord, payload: secretWord });
 
   const setLanguage = (language: string) => {
-    dispatch({ type: "setLanguage", payload: language });
+    dispatch({ type: Action.setLanguage, payload: language });
   };
 
   React.useEffect(() => {
