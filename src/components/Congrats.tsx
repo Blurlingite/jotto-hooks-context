@@ -20,8 +20,4 @@ const Congrats = () => {
   }
 };
 
-// const mapStateToProps = ({ success }: { success: boolean }) => {
-//   return { success };
-// };
-
 export default Congrats;

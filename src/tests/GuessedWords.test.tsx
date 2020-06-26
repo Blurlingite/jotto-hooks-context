@@ -3,9 +3,6 @@ import { findByTestAttr } from "../../test/testUtils";
 import GuessedWords from "../components/GuessedWords";
 import { shallow } from "enzyme";
 import guessedWordsContext from "../contexts/guessedWordsContext";
-// const defaultProps = {
-//   guessedWords: [{ guessedWord: "train", letterMatchCount: 3 }],
-// };
 
 /**
  * Factory function to create a ShallowWrapper for the GuessedWords component.
