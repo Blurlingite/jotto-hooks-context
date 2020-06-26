@@ -1,7 +1,7 @@
 import React from "react";
 
 // no default value
-const guessedWordsContext = React.createContext([]);
+const guessedWordsContext = React.createContext(undefined);
 
 /**
  * @function useGuessedWords
