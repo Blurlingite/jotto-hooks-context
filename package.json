@@ -12,6 +12,7 @@
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
     "axios": "^0.19.2",
+    "concurrently": "^5.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -22,6 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "server": "npm start --prefix random-word-server",
+    "dev": "concurrently \"npm run server\" \"npm run start\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
