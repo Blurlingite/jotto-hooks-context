@@ -12,6 +12,14 @@ const Congrats = () => {
       <div data-test="component-congrats" className="alert alert-success">
         <span data-test="congrats-message">
           {stringsModule.getStringByLanguage(language, "congrats")}
+
+          <button
+            className="btn btn-primary mb-2"
+            style={{ marginLeft: "10px" }}
+            onClick={() => window.location.reload()}
+          >
+            Play Again
+          </button>
         </span>
       </div>
     );
