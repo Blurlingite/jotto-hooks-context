@@ -42,6 +42,9 @@ function reducer(state: AppState, action: AppActions) {
   }
 }
 function App() {
+  // const isRevealed = true;
+
+  const [isRevealed, setIsRevealed] = React.useState(false);
   const [state, dispatch] = React.useReducer(reducer, {
     secretWord: null,
     language: "en",
@@ -71,7 +74,24 @@ function App() {
 
   return (
     <div className="container" data-test="component-app">
-      <p>The secret word is {state.secretWord}</p>
+      {isRevealed ? (
+        <p>The secret word is {state.secretWord}</p>
+      ) : (
+        <p>
+          The secret word is ?????
+          <button
+            className="btn btn-primary mb-2"
+            style={{ marginLeft: "10px" }}
+            onClick={(evt) => {
+              evt.preventDefault();
+              setIsRevealed(true);
+            }}
+          >
+            Reveal Word
+          </button>
+        </p>
+      )}
+
       <h1>Jotto</h1>
       {/* this provides the language to the components within it and we access the language through App's state with state.language*/}
       <languageContext.Provider value={state.language}>
